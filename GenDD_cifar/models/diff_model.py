@@ -7,14 +7,16 @@ import torch.nn.functional as F
 from diffloss import DiffLoss
 
 class DiffModel(nn.Module):
-    def __init__(self, model, classifier=None, finetune_classifier=False, feature_dim=1024, target_dim=1024, diffloss_d=3, diffloss_w=1024,  num_sampling_steps='100', diffusion_batch_mul=10, stage="stage-2", smooth=0.9, beta=1.0, token_dim=64, cond_drop_prob=0.2, grad_checkpointing=False):
+    def __init__(self, model, classifier=None, feature_dim=1024, target_dim=1024, smooth=0.9, num_sampling=1, stage="stage-2", beta=1.0, diffloss_d=3, diffloss_w=1024, num_sampling_steps='100', diffusion_batch_mul=10, token_dim=64, cond_drop_prob=0.2, grad_checkpointing=False, finetune_classifier=False):
         super(DiffModel, self).__init__()
         self.model = model
         self.feature_dim = feature_dim
         self.target_dim = target_dim
         self.classifier = classifier
-        self.stage = stage
         self.smooth = smooth
+        self.num_sampling = num_sampling
+
+        self.stage = stage
         self.beta = beta
         self.token_dim = token_dim
         self.cond_drop_prob = cond_drop_prob
@@ -113,7 +115,7 @@ class DiffModel(nn.Module):
         feats, _ = self.model(x, is_feat=True)
         logits_new = self.model.fc(feats[-1])
 
-        NUM_SAMPLES = 1 
+        NUM_SAMPLES = self.num_sampling
         z = self.cls_projector(feats[-1]).unsqueeze(1).repeat(NUM_SAMPLES, self.chunk_idx.size(1), 1)
         chunk_idx = self.chunk_idx.repeat(x.size(0) * NUM_SAMPLES, 1)
         z = z.reshape(-1, z.size(-1))

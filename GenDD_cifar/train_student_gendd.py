@@ -26,7 +26,6 @@ from dataset.cifar100 import get_cifar100_dataloaders, get_cifar100_dataloaders_
 
 from distiller_zoo import DistillKL, HintLoss, Attention, Similarity, Correlation, VIDLoss, RKDLoss
 from distiller_zoo import PKT, ABLoss, FactorTransfer, KDSVD, FSP, NSTLoss
-from crd.criterion import CRDLoss
 
 from helper.loops import train_distill as train, validate
 from helper.pretrain import init
@@ -74,11 +73,11 @@ def parse_option():
 
     # optimization
     parser.add_argument('--warmup_epochs', type=int, default=20, help='warmup epochs')
-    parser.add_argument('--learning_rate', type=float, default=0.0001, help='learning rate')
+    parser.add_argument('--learning_rate', type=float, default=0.001, help='learning rate')
     parser.add_argument('--min_learning_rate', type=float, default=0, help='minimal learning rate')
     parser.add_argument('--lr_decay_epochs', type=str, default='150,180,210', help='where to decay lr, can be a list') #150 180 210
     parser.add_argument('--lr_decay_rate', type=float, default=0.1, help='decay rate for learning rate')
-    parser.add_argument('--weight_decay', type=float, default=0.02, help='weight decay')
+    parser.add_argument('--weight_decay', type=float, default=0.05, help='weight decay')
     parser.add_argument('--momentum', type=float, default=0.9, help='momentum')
 
     # dataset
@@ -98,18 +97,19 @@ def parse_option():
     parser.add_argument('--evaluate', action='store_true')
 
     # GenDD
-    parser.add_argument('--smooth', type=float, default=0.9, help='smooth technique')
-    parser.add_argument('--beta', type=float, default=1.0, help='representation mix')
-    parser.add_argument('--token_dim', type=int, default=64, help=" token dim ")
-    parser.add_argument('--cond_drop_prob', type=float, default=0.2, help=" classifier free guidance ")
     parser.add_argument('--diffloss_w', type=int, default=1024, help="warmup epochs")
     parser.add_argument('--diffusion_batch_mul', type=int, default=50, help="warmup epochs")
+    parser.add_argument('--token_dim', type=int, default=64, help=" token dim ")
+    parser.add_argument('--cond_drop_prob', type=float, default=0.2, help=" classifier free guidance ")
     parser.add_argument('--diff_weight_decay', type=float, default=0., help=" weight decay for diff parameters ")
     parser.add_argument('--adam_beta_min', type=float, default=0.95, help=" adam_beta ")
     parser.add_argument('--adam_beta_max', type=float, default=0.999, help=" adam_beta ")
-    parser.add_argument('--finetune_classifier', action='store_true')
+    parser.add_argument('--beta', type=float, default=1.0, help='for distribution contraction')
     parser.add_argument('--cos', action='store_true')
 
+    parser.add_argument('--smooth', type=float, default=0.9, help='distribution contraction')
+    parser.add_argument('--num_sampling', type=int, default=1, help='sampling for representation aggregation')
+    parser.add_argument('--finetune_classifier', action='store_true')
 
     opt = parser.parse_args()
 
@@ -224,7 +224,7 @@ def main():
 
     model = model_dict[opt.model_s](num_classes=n_cls)
     opt.feature_dim = model.fc.weight.size(1)
-    model_s = model_dict['DiffModel'](model=model, classifier=classifier, feature_dim=opt.feature_dim, target_dim=opt.target_dim, stage='stage-2', smooth=opt.smooth, beta=opt.beta, token_dim=opt.token_dim, cond_drop_prob=opt.cond_drop_prob, diffloss_w=opt.diffloss_w, diffusion_batch_mul=opt.diffusion_batch_mul, finetune_classifier=opt.finetune_classifier)
+    model_s = model_dict['DiffModel'](model=model, classifier=classifier, feature_dim=opt.feature_dim, target_dim=opt.target_dim, smooth=opt.smooth, num_sampling=opt.num_sampling, stage='stage-2', beta=opt.beta, token_dim=opt.token_dim, cond_drop_prob=opt.cond_drop_prob, diffloss_w=opt.diffloss_w, diffusion_batch_mul=opt.diffusion_batch_mul, finetune_classifier=opt.finetune_classifier)
 
     module_list = nn.ModuleList([])
     module_list.append(model_s)
