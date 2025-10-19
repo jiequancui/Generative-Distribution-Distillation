@@ -34,7 +34,7 @@ Pretrained models will be available soon.
  | --- | --- | --- | --- | --- |
  | KD | BEiT-L-ResNet50 (A1 600e) | 81.68  | - | - |
  | DKD | BEiT-L-ResNet50 (A1 600e)| 81.83 | - | - |
- | GenDD | BEiT-L-ResNet50 (A1 600e) | **82.28** | - | - |
+ | GenDD | BEiT-L-ResNet50 (A1 600e) | **82.28** | - | [log](https://drive.google.com/file/d/1GBB1haWkHbN-0riMOvckPF5VGAwEWfIo/view?usp=sharing) |
  
 ### Unsupervised KD on CC3M
 We train models on CC3M without labels and evaluate the trained models on ImageNet validation set.               
