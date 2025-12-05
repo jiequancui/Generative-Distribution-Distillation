@@ -31,11 +31,11 @@ Pretrained models will be available soon.
  | KD | BEiT-L-ResNet50 (A2 300e) | 80.89  | - | - |
  | DKD | BEiT-L-ResNet50 (A2 300e)| 80.77 | - | - |
  | GenDD | BEiT-B-ResNet50 (A2 300e) | **82.01**  | [model]() | [log](https://drive.google.com/file/d/1lzAowLVxNlzy1WEuPeBWtYiaHLjbkUaZ/view?usp=sharing) |
- | GenDD | BEiT-L-ResNet50 (A2 300e) | **81.64** (wait to update) | [model](https://drive.google.com/file/d/1QDJh9SgqyUj0TZFk1dzIgUE4UpxJNWVj/view?usp=sharing) | [log](https://drive.google.com/file/d/1bKuokvl7snVHgSd-lg_qawKTtrYbyXVb/view?usp=sharing) |
+ | GenDD | BEiT-L-ResNet50 (A2 300e) | **81.83** (wait to update) | [model](https://drive.google.com/file/d/1QDJh9SgqyUj0TZFk1dzIgUE4UpxJNWVj/view?usp=sharing) | [log](https://drive.google.com/file/d/1bKuokvl7snVHgSd-lg_qawKTtrYbyXVb/view?usp=sharing) |
  | --- | --- | --- | --- | --- |
  | KD | BEiT-L-ResNet50 (A1 600e) | 81.68  | - | - |
  | DKD | BEiT-L-ResNet50 (A1 600e)| 81.83 | - | - |
- | GenDD | BEiT-L-ResNet50 (A1 600e) | **82.28** | [model](https://drive.google.com/file/d/1xyV16MzXFrpzMLnSYxNq6VmX0iPy5JzW/view?usp=sharing) | [log](https://drive.google.com/file/d/1GBB1haWkHbN-0riMOvckPF5VGAwEWfIo/view?usp=sharing) |
+ | GenDD | BEiT-L-ResNet50 (A1 600e) | **82.31** | [model](https://drive.google.com/file/d/1xyV16MzXFrpzMLnSYxNq6VmX0iPy5JzW/view?usp=sharing) | [log](https://drive.google.com/file/d/1GBB1haWkHbN-0riMOvckPF5VGAwEWfIo/view?usp=sharing) |
  
 ### Unsupervised KD on CC3M
 We train models on CC3M without labels and evaluate the trained models on ImageNet validation set.               
