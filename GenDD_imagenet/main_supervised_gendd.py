@@ -1,5 +1,5 @@
-import argparse
 import os
+import argparse
 import random
 import shutil
 import time
@@ -236,6 +236,9 @@ def main_worker(gpu, ngpus_per_node, args):
             model = getattr(mobilenetv1, args.arch)()
             args.feature_dim_s = model.fc.weight.size(1)
 
+    # synbn
+    model = nn.SyncBatchNorm.convert_sync_batchnorm(model)
+
     # teacher model
     assert args.teacher_arch is not None, "the teacher model should be provided"
     if args.teacher_arch.startswith('resnet'):
@@ -271,11 +274,24 @@ def main_worker(gpu, ngpus_per_node, args):
                 args.workers = int((args.workers + ngpus_per_node - 1) / ngpus_per_node)
                 model = torch.nn.parallel.DistributedDataParallel(model, device_ids=[args.gpu])
                 model_without_ddp = model.module
+
+                # reload
+                if args.reload:
+                    print('reload pretraining checkpoint ************')
+                    checkpoint = torch.load(args.reload, map_location='cpu')
+                    model.load_state_dict(checkpoint['state_dict'], strict=False)
+
+                # auto resume
+                filename=f'{args.mark}/checkpoint.pth.tar'
+                if os.path.exists(filename):
+                    args.resume = filename
+
             else:
                 model.cuda()
                 # DistributedDataParallel will divide and allocate batch_size to all
                 # available GPUs if device_ids are not set
                 model = torch.nn.parallel.DistributedDataParallel(model)
+                
     elif args.gpu is not None and torch.cuda.is_available():
         torch.cuda.set_device(args.gpu)
         model = model.cuda(args.gpu)
@@ -310,11 +326,6 @@ def main_worker(gpu, ngpus_per_node, args):
     """Sets the learning rate to the initial LR decayed by 10 every 30 epochs"""
     scheduler = StepLR(optimizer, step_size=30, gamma=0.1)
 
-    if args.reload:
-        checkpoint = torch.load(args.reload, map_location='cpu')
-        model.load_state_dict(checkpoint['state_dict'], strict=False)
-
-    
     # optionally resume from a checkpoint
     if args.resume:
         if os.path.isfile(args.resume):
@@ -388,7 +399,7 @@ def main_worker(gpu, ngpus_per_node, args):
 
     train_loader = torch.utils.data.DataLoader(
         train_dataset, batch_size=args.batch_size, shuffle=(train_sampler is None),
-        num_workers=args.workers, pin_memory=True, sampler=train_sampler)
+        num_workers=args.workers, pin_memory=True, sampler=train_sampler, drop_last=True)
 
     val_loader = torch.utils.data.DataLoader(
         val_dataset, batch_size=args.batch_size, shuffle=False,
@@ -573,6 +584,8 @@ def validate(val_loader, model, criterion, args):
     if args.distributed:
         top1.all_reduce()
         top5.all_reduce()
+        top1_new.all_reduce()
+        top5_new.all_reduce()
 
     if args.distributed and (len(val_loader.sampler) * args.world_size < len(val_loader.dataset)):
         aux_val_dataset = Subset(val_loader.dataset,

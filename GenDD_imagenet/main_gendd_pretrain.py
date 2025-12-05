@@ -233,6 +233,9 @@ def main_worker(gpu, ngpus_per_node, args):
             model = getattr(mobilenetv1, args.arch)()
             args.feature_dim_s = model.fc.weight.size(1)
 
+    # synbn
+    model = nn.SyncBatchNorm.convert_sync_batchnorm(model)
+
     # teacher model
     assert args.teacher_arch is not None, "the teacher model should be provided"
     if args.teacher_arch.startswith('resnet'):
