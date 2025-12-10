@@ -18,7 +18,7 @@ Pretrained models will be available soon.
 
 ### Supervised KD on ImageNet
 
- | Method | Model | Top-1 Acc(%) | Linear prob | link | log | 
+ | Method | Model | Top-1 Acc(%) | Linear probing | link | log | 
  | :---: | :---: | :---: | :---: | :---: | :---: |
  | KD     | ResNet34-ResNet18 | 71.24 | - | - | - |
  | IKL-KD | ResNet34-ResNet18 | 71.91 | - | - | - |
