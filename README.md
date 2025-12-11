@@ -22,7 +22,7 @@ Pretrained models will be available soon.
  | :---: | :---: | :---: | :---: | :---: | :---: |
  | KD     | ResNet34-ResNet18 | 71.24 | - | - | - |
  | IKL-KD | ResNet34-ResNet18 | 71.91 | - | - | - |
- | GenDD  | ResNet34-ResNet18 | **72.38** | - | [model](https://drive.google.com/file/d/1hVDVDf0e13fisdsVfb6aNwY3371GqbjO/view?usp=sharing) | [log](https://drive.google.com/file/d/1pn8fHOVnvD4cpO6BuQpprU6Ht8soLN2k/view?usp=sharing) |
+ | GenDD  | ResNet34-ResNet18 | **72.38** | **72.40** | [model](https://drive.google.com/file/d/1hVDVDf0e13fisdsVfb6aNwY3371GqbjO/view?usp=sharing) | [log](https://drive.google.com/file/d/1pn8fHOVnvD4cpO6BuQpprU6Ht8soLN2k/view?usp=sharing) |
  | ---    | --- | --- | --- | --- |
  | KD | ResNet50-MVNet | 71.44 | - | - | - |
  | IKL-KD | ResNet50-MVNet | 73.19 | - | - | - | 
