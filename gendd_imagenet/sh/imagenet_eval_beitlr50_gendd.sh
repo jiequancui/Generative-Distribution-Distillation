@@ -1,0 +1,30 @@
+#!/bin/bash
+#SBATCH --job-name=imagenet_beitlargeres50_gendd_eval
+#SBATCH --mail-user=jiequancui@link.cuhk.edu.hk
+#SBATCH --output=imagenet_beitlargeres50_gendd_eval.log
+#SBATCH --mail-type=ALL
+#SBATCH --cpus-per-task=64
+#SBATCH --gres=gpu:8
+#SBATCH -p dvlab
+#SBATCH -w proj199
+
+source activate py3.8_pt1.8.1
+
+python main_supervised_gendd.py -a resnet50 \
+	       --dist-url 'tcp://127.0.0.1:8887' \
+               --dist-backend 'nccl' \
+	       --multiprocessing-distributed \
+	       --world-size 1 \
+	       --rank 0 \
+	       --lr 2e-3 \
+	       --cos \
+	       --weight-decay 1e-2 \
+	       --teacher_arch beitv2_large_patch16_224 \
+	       --teacher_model /mnt/proj205/jqcui/code/imagenet_cls/vanillaKD/pretrained_models/beitv2_large_patch16_224_pt1k_ft21kto1k_new.pth \
+	       -j 8 \
+	       -b 512 \
+	       --mark 'workdir/tmp' \
+               --resume 'workdir/imagenet_beitlargeres50_gendd_A2/model_best.pth.tar' \
+	       --evaluate \
+               --num_sampling 5 \
+	       /mnt/proj198/jqcui/Data/ImageNet
