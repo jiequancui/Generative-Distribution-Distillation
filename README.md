@@ -50,7 +50,7 @@ We train models on CC3M without labels and evaluate the trained models on ImageN
 
 
 ## Training and Evaluation
-Before evaluation, please specify the path of the trained models.              
+Before evaluation, please specify the path of the trained models. A linear classifier can achieve similar results to the diffusion head.              
 
 For CIFAR,   
 ```
@@ -64,7 +64,8 @@ For supervised KD on ImageNet,
 ```
 cd GenDD_imagenet              
 bash sh/imagenet_train_res34res18_gendd.sh            
-bash sh/imagenet_eval_res34res18_gendd.sh                 
+bash sh/imagenet_eval_res34res18_gendd.sh
+bash sh/imagenet_train_res34res18_gendd_linear.sh               
 ```
 
 For unsupervised KD on CC3M,     
