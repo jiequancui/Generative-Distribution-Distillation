@@ -22,21 +22,21 @@ Pretrained models will be available soon.
  | :---: | :---: | :---: | :---: | :---: | :---: |
  | KD     | ResNet34-ResNet18 | 71.24 | - | - | - |
  | IKL-KD | ResNet34-ResNet18 | 71.91 | - | - | - |
- | GenDD  | ResNet34-ResNet18 | **72.38** | **72.40** | [model](https://drive.google.com/file/d/1hVDVDf0e13fisdsVfb6aNwY3371GqbjO/view?usp=sharing) | [log](https://drive.google.com/file/d/1pn8fHOVnvD4cpO6BuQpprU6Ht8soLN2k/view?usp=sharing) |
+ | GenDD  | ResNet34-ResNet18 | **72.38** | **72.40** [log](https://drive.google.com/file/d/1Tc-KjfdjDGhwdMQVGC2CDulrFzDKrxyx/view?usp=sharing) | [model](https://drive.google.com/file/d/1hVDVDf0e13fisdsVfb6aNwY3371GqbjO/view?usp=sharing) | [log](https://drive.google.com/file/d/1pn8fHOVnvD4cpO6BuQpprU6Ht8soLN2k/view?usp=sharing) |
  | ---    | --- | --- | --- | --- |
  | KD | ResNet50-MVNet | 71.44 | - | - | - |
  | IKL-KD | ResNet50-MVNet | 73.19 | - | - | - | 
- | GenDD | ResNet50-MVNet | **73.78** | - | [model](https://drive.google.com/file/d/1e9kcyBqPuYlyg9aqBwf-SwzTdQpGRNoP/view?usp=sharing) | [log](https://drive.google.com/file/d/1k9_7CH0IK7VOZ-s3gRDNeoa0pR72MO1t/view?usp=sharing) |
+ | GenDD | ResNet50-MVNet | **73.78** | **73.76** [log](https://drive.google.com/file/d/1hIsCGdZ3ede9OsDsqjE1XC3P0_g_5TbL/view?usp=sharing) | [model](https://drive.google.com/file/d/1e9kcyBqPuYlyg9aqBwf-SwzTdQpGRNoP/view?usp=sharing) | [log](https://drive.google.com/file/d/1k9_7CH0IK7VOZ-s3gRDNeoa0pR72MO1t/view?usp=sharing) |
  | --- | --- | --- | --- | --- |
  | KD | BEiT-L-ResNet50 (A2 300e) | 80.89  | - | - | - |
  | DKD | BEiT-L-ResNet50 (A2 300e)| 80.77 | - | - | - |
- | GenDD | BEiT-B-ResNet50 (A2 300e) | **82.01**  | **81.96** | [model]() | [log](https://drive.google.com/file/d/1lzAowLVxNlzy1WEuPeBWtYiaHLjbkUaZ/view?usp=sharing) |
- | GenDD | BEiT-L-ResNet50 (A2 300e) | **81.83** | **81.79** | [model](https://drive.google.com/file/d/1QDJh9SgqyUj0TZFk1dzIgUE4UpxJNWVj/view?usp=sharing) | [log](https://drive.google.com/file/d/1bKuokvl7snVHgSd-lg_qawKTtrYbyXVb/view?usp=sharing) |
+ | GenDD | BEiT-B-ResNet50 (A2 300e) | **82.01**  | **81.96** [log](https://drive.google.com/file/d/1vWPQU_dUSiFqIgv-OvXBpHVNoyLJnLZf/view?usp=sharing) | [model](https://drive.google.com/file/d/1MxNtUAJ3skcEGr5kldEpN6n1Lt_P0zVG/view?usp=sharing) | [log](https://drive.google.com/file/d/18k4Lw6p-IyC6qUuJAzaJssDBnF90oN_2/view?usp=sharing) |
+ | GenDD | BEiT-L-ResNet50 (A2 300e) | **81.83** | **81.79** [log](https://drive.google.com/file/d/1UhD4M8TSQB_GnDlXL-NPymhU2jiiWTje/view?usp=sharing) | - | [log](https://drive.google.com/file/d/1HgYPQaXMLW-AkmfScMSSJ51e-aqUIlxU/view?usp=sharing) |
  | --- | --- | --- | --- | --- |
  | KD | BEiT-L-ResNet50 (A1 600e) | 81.68  | - | - | - |
  | DKD | BEiT-L-ResNet50 (A1 600e)| 81.83 | - | - | - |
- | GenDD | BEiT-B-ResNet50 (A1 600e) | **82.31** | **82.15** | [model]() | [log]() |
- | GenDD | BEiT-L-ResNet50 (A1 600e) | **82.34** | **82.36** | [model](https://drive.google.com/file/d/1xyV16MzXFrpzMLnSYxNq6VmX0iPy5JzW/view?usp=sharing) | [log](https://drive.google.com/file/d/1GBB1haWkHbN-0riMOvckPF5VGAwEWfIo/view?usp=sharing) |
+ | GenDD | BEiT-B-ResNet50 (A1 600e) | **82.31** | **82.15** [log](https://drive.google.com/file/d/10UWj5hM9nBaMjtotzKS-lkIPFtqsAUFu/view?usp=sharing) | - | [log](https://drive.google.com/file/d/1WxkCDH578aluRGTMKZzwtLeicosfSOGc/view?usp=sharing) |
+ | GenDD | BEiT-L-ResNet50 (A1 600e) | **82.34** | **82.36** [log](https://drive.google.com/file/d/1hzVDIfEKNRA_rGr4kjw8CF76PKMTUvxT/view?usp=sharing) | [model](https://drive.google.com/file/d/1OXQ4ytMRHOAvoPBCNCZKhFWVy1hs3psr/view?usp=sharing) | [log](https://drive.google.com/file/d/1LKdf7aobcvYA1SuSN4rywWWnUaicU5B9/view?usp=sharing) |
  
 ### Unsupervised KD on CC3M
 We train models on CC3M without labels and evaluate the trained models on ImageNet validation set.               
