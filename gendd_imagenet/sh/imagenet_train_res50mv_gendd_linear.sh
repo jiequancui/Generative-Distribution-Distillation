@@ -16,7 +16,7 @@ python main_supervised_gendd_linear.py -a MobileNetV1 \
 	       --multiprocessing-distributed \
 	       --world-size 1 \
 	       --rank 0 \
-	       --lr 400 \
+	       --lr 500 \
 	       --cos \
 	       --weight-decay 0 \
 	       --teacher_arch resnet50 \
