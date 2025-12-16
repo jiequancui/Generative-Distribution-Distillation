@@ -7,7 +7,7 @@ Contraction serves as a gradient-level surrogate for multi-task learning, realiz
 sampling image representations. To evaluate the effectiveness of our method, we
 conduct experiments on balanced, imbalanced, and unlabeled data. Experimental
 results show that GenDD performs competitively in the unsupervised setting, significantly surpassing KL baseline by **16.29%** on ImageNet validation set. With
-label supervision, our ResNet-50 achieves **82.28%** top-1 accuracy on ImageNet
+label supervision, our ResNet-50 achieves **82.36%** top-1 accuracy on ImageNet
 in 600 epochs training, establishing a new state-of-the-art.
 
 ## Envrionment
@@ -26,7 +26,7 @@ Pretrained models will be available soon.
  | ---    | --- | --- | --- | --- |
  | KD | ResNet50-MVNet | 71.44 | - | - | - |
  | IKL-KD | ResNet50-MVNet | 73.19 | - | - | - | 
- | GenDD | ResNet50-MVNet | **73.78** | **73.76** [log](https://drive.google.com/file/d/1hIsCGdZ3ede9OsDsqjE1XC3P0_g_5TbL/view?usp=sharing) | [model](https://drive.google.com/file/d/1e9kcyBqPuYlyg9aqBwf-SwzTdQpGRNoP/view?usp=sharing) | [log](https://drive.google.com/file/d/1k9_7CH0IK7VOZ-s3gRDNeoa0pR72MO1t/view?usp=sharing) |
+ | GenDD | ResNet50-MVNet | **73.78** | **73.76** [log](https://drive.google.com/file/d/12AqY-OYPA86h0VOxrwOT1_slnpmMwj26/view?usp=sharing) | [model](https://drive.google.com/file/d/1e9kcyBqPuYlyg9aqBwf-SwzTdQpGRNoP/view?usp=sharing) | [log](https://drive.google.com/file/d/1k9_7CH0IK7VOZ-s3gRDNeoa0pR72MO1t/view?usp=sharing) |
  | --- | --- | --- | --- | --- |
  | KD | BEiT-L-ResNet50 (A2 300e) | 80.89  | - | - | - |
  | DKD | BEiT-L-ResNet50 (A2 300e)| 80.77 | - | - | - |
